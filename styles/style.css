@@ -234,7 +234,15 @@ h1.title {
   top: -0.1em;
 }
 
-.content__list {
+/* .content__list {
+  position: relative;
+  padding-right: 2px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-block-size: 298px;
+} */
+
+.content__list-container {
   position: relative;
   padding-right: 2px;
   overflow-x: hidden;
@@ -327,6 +335,8 @@ h1.title {
 
 .more-button {
   padding: 6px 141px;
+  width: 396px;
+  margin: 0 2px 2px 2px
 }
 
 .more-button:focus-visible {
@@ -335,8 +345,6 @@ h1.title {
   outline: 1px solid #fff;
   outline-offset: 1px;
 }
-
-
 
 .result__video-container,
 .content__list-container {
