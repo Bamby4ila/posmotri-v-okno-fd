@@ -46,10 +46,6 @@ ol {
   margin: 133px 30px;
 }
 
-
-/* Section result */
-
-
 .result {
   display: flex;
   flex-direction: column;
@@ -87,6 +83,7 @@ ol {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 18px;
+  /* letter-spacing: 0.7px; */
 }
 
 .search-form__checkbox-list {
@@ -206,10 +203,6 @@ ol {
   outline-offset: 1px;
 }
 
-
-/* Content details */
-
-
 .content__details {
   block-size: 100%;
   inline-size: 100%;
@@ -238,7 +231,7 @@ h1.title {
 .content__accent::after {
   content: "-";
   position: relative;
-  top: -0.04em;
+  top: -0.1em;
 }
 
 .content__list {
@@ -323,6 +316,7 @@ h1.title {
   font-weight: 400;
   font-size: 18px;
   line-height: 0.9;
+  /* letter-spacing: 0.7px; */
 }
 
 .content__video-card-thumbnail {
@@ -341,6 +335,8 @@ h1.title {
   outline: 1px solid #fff;
   outline-offset: 1px;
 }
+
+
 
 .result__video-container,
 .content__list-container {

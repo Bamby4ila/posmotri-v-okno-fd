@@ -6,7 +6,16 @@ const endpoint = `${BASE_URL}/api/videos?pagination[pageSize]=${cardsOnPage}&`;
 
 /* ЭЛЕМЕНТЫ СТРАНИЦЫ */
 const cardsList = document.querySelector('.content__list');
-const cardsContainer = document.querySelector('.content__list-container');
+
+
+/* !!! */
+
+/* const cardsContainer = document.querySelector('.content__list-container'); */
+
+/* !!! */
+
+const cardsContainer = document.querySelector('.content__list');
+
 const videoContainer = document.querySelector('.result__video-container');
 const videoElement = document.querySelector('.result__video');
 const form = document.querySelector('form');
@@ -88,6 +97,7 @@ async function mainMechanics(endpoint) {
     removePreloader(cardsContainer, '.preloader');
 
     // Добавляем класс для стилизации скроллбара
+    
     cardsContainer.classList.add('custom-scrollbar');
 
     chooseCurrentVideo({
