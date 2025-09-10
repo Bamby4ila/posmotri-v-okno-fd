@@ -230,6 +230,9 @@ h1.title {
   overflow-x: hidden;
   overflow-y: auto;
   max-block-size: 298px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #D9D9D9 transparent;
 }
 
 .content__list-item:not(:last-child) {
