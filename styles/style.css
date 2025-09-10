@@ -98,6 +98,16 @@ ol {
   align-items: center;
 }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .search-form__textfield {
   border-top: 1px solid #fff;
   border-right: none;
@@ -230,9 +240,6 @@ h1.title {
   overflow-x: hidden;
   overflow-y: auto;
   max-block-size: 298px;
-
-  scrollbar-width: thin;
-  scrollbar-color: #D9D9D9 transparent;
 }
 
 .content__list-item:not(:last-child) {
@@ -329,6 +336,8 @@ h1.title {
   outline-offset: 1px;
 }
 
+
+
 .result__video-container,
 .content__list-container {
   position: relative;
@@ -344,18 +353,4 @@ h1.title {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
-}
-
-.more-button {
-  width: 399px;
-}
-
-.visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  inline-size: 1px;
-  block-size: 1px;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }

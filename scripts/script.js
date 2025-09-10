@@ -1,11 +1,21 @@
 /* КОНФИГ */
-const preloaderWaitingTime = 1200;
+const preloaderWaitindTime = 1200;
 const cardsOnPage = 5;
 const BASE_URL = 'https://v-content.practicum-team.ru';
 const endpoint = `${BASE_URL}/api/videos?pagination[pageSize]=${cardsOnPage}&`;
 
 /* ЭЛЕМЕНТЫ СТРАНИЦЫ */
+const cardsList = document.querySelector('.content__list');
+
+
+/* !!! */
+
+/* const cardsContainer = document.querySelector('.content__list-container'); */
+
+/* !!! */
+
 const cardsContainer = document.querySelector('.content__list');
+
 const videoContainer = document.querySelector('.result__video-container');
 const videoElement = document.querySelector('.result__video');
 const form = document.querySelector('form');
@@ -30,18 +40,27 @@ mainMechanics(endpoint);
 // осуществляется поиск ✅
 form.onsubmit = (e) => {
   e.preventDefault();
-  cardsContainer.textContent = '';
+
+  cardsList.textContent = '';
+  const buttonInDOM = cardsContainer.querySelector('.more-button');
+  if (buttonInDOM) {
+    buttonInDOM.remove();
+  }
+
   [...videoContainer.children].forEach((el) => {
     el.className === 'error' && el.remove();
   });
+
   showPreloader(preloaderTmp, videoContainer);
   showPreloader(preloaderTmp, cardsContainer);
+
   const formData = serializeFormData(form);
   const requestUrl = generateFilterRequest(
     endpoint,
     formData.city,
     formData.timeArray
   );
+
   mainMechanics(requestUrl);
 };
 
@@ -60,7 +79,7 @@ async function mainMechanics(endpoint) {
       baseUrl: BASE_URL,
       dataArray: data.results,
       cardTmp,
-      container: cardsContainer,
+      container: cardsList,
     });
 
     setVideo({
@@ -73,9 +92,14 @@ async function mainMechanics(endpoint) {
       .querySelectorAll('.content__card-link')[0]
       .classList.add('content__card-link_current');
     await waitForReadyVideo(videoElement);
-    await delay(preloaderWaitingTime);
+    await delay(preloaderWaitindTime);
     removePreloader(videoContainer, '.preloader');
     removePreloader(cardsContainer, '.preloader');
+
+    // Добавляем класс для стилизации скроллбара
+    
+    cardsContainer.classList.add('custom-scrollbar');
+
     chooseCurrentVideo({
       baseUrl: BASE_URL,
       videoData: cardsOnPageState,
@@ -87,7 +111,7 @@ async function mainMechanics(endpoint) {
     showMoreCards({
       dataArray: data,
       buttonTemplate: moreButtonTmp,
-      cardsContainer,
+      cardsList,
       buttonSelector: '.more-button',
       initialEndpoint: endpoint,
       baseUrl: BASE_URL,
@@ -159,7 +183,7 @@ function appendCards({ baseUrl, dataArray, cardTmp, container }) {
   console.log('Сгенерировал карточки');
 }
 
-// Устанавливет нужное видео в контейнер ✅
+// Устанавливет внужное видео в контейнер ✅
 function setVideo({ baseUrl, video, videoUrl, posterUrl }) {
   video.setAttribute('src', `${baseUrl}${videoUrl}`);
   video.setAttribute('poster', `${baseUrl}${posterUrl}`);
@@ -224,7 +248,7 @@ function chooseCurrentVideo({
           posterUrl: vidoObj.poster.url,
         });
         await waitForReadyVideo(mainVideo);
-        await delay(preloaderWaitingTime);
+        await delay(preloaderWaitindTime);
         removePreloader(videoContainer, '.preloader');
         console.log('Переключил видео');
       };
@@ -245,7 +269,7 @@ function showError(container, errorTemplate, errorMessage) {
 function showMoreCards({
   dataArray,
   buttonTemplate,
-  cardsContainer,
+  cardsList,
   buttonSelector,
   initialEndpoint,
   baseUrl,
@@ -269,7 +293,7 @@ function showMoreCards({
         baseUrl,
         dataArray: data.results,
         cardTmp,
-        container: cardsContainer,
+        container: cardsList,
       });
       chooseCurrentVideo({
         baseUrl: BASE_URL,
@@ -281,7 +305,7 @@ function showMoreCards({
       showMoreCards({
         dataArray: data,
         buttonTemplate,
-        cardsContainer,
+        cardsList,
         buttonSelector,
         initialEndpoint,
         baseUrl,
