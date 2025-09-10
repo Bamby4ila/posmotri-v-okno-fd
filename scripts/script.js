@@ -7,13 +7,6 @@ const endpoint = `${BASE_URL}/api/videos?pagination[pageSize]=${cardsOnPage}&`;
 /* ЭЛЕМЕНТЫ СТРАНИЦЫ */
 const cardsList = document.querySelector('.content__list');
 
-
-/* !!! */
-
-/* const cardsContainer = document.querySelector('.content__list-container'); */
-
-/* !!! */
-
 const cardsContainer = document.querySelector('.content__list');
 
 const videoContainer = document.querySelector('.result__video-container');
